@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home Page-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MyFirstProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomePage" customModule="MyFirstProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,13 +52,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4bE-f1-Mmm">
+                                <rect key="frame" x="100" y="334" width="193" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1Il-OQ-I29"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="1Il-OQ-I29" firstAttribute="trailing" secondItem="4bE-f1-Mmm" secondAttribute="trailing" constant="100" id="1Ln-lD-wd2"/>
                             <constraint firstItem="atP-fY-9xY" firstAttribute="leading" secondItem="1Il-OQ-I29" secondAttribute="leading" constant="100" id="Gvb-BB-r2v"/>
                             <constraint firstItem="atP-fY-9xY" firstAttribute="top" secondItem="1Il-OQ-I29" secondAttribute="top" constant="200" id="Hhp-hG-rcN"/>
+                            <constraint firstItem="4bE-f1-Mmm" firstAttribute="leading" secondItem="1Il-OQ-I29" secondAttribute="leading" constant="100" id="TpX-EE-r7i"/>
                             <constraint firstItem="1Il-OQ-I29" firstAttribute="trailing" secondItem="atP-fY-9xY" secondAttribute="trailing" constant="100" id="bBM-QC-y5D"/>
+                            <constraint firstItem="4bE-f1-Mmm" firstAttribute="top" secondItem="atP-fY-9xY" secondAttribute="bottom" constant="100" id="phg-mf-lt0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lhi-Zz-fRo"/>
