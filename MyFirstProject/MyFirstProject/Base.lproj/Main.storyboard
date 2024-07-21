@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yxg-6I-yrG">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home Page-->
+        <!--Anasayfa-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomePage" customModule="MyFirstProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,12 +17,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7O-Xr-3sM">
-                                <rect key="frame" x="100" y="259" width="193" height="35"/>
+                                <rect key="frame" x="100" y="303" width="193" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Yeni Kişi Ekle"/>
                                 <connections>
                                     <action selector="kisiEkleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="77m-YN-fbM"/>
-                                    <segue destination="3MA-Bn-KJC" kind="show" id="8dA-aQ-YyM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -34,26 +33,32 @@
                             <constraint firstItem="o7O-Xr-3sM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="XKX-Ug-bva"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Anasayfa" id="PdL-s3-Fip">
+                        <barButtonItem key="backBarButtonItem" title="Geri" id="aLp-hY-IEP"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="3MA-Bn-KJC" kind="show" identifier="newEntryGecis" id="1HB-BO-OYU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="82" y="4"/>
+            <point key="canvasLocation" x="1008.3969465648854" y="3.5211267605633805"/>
         </scene>
-        <!--View Controller-->
+        <!--Yeni Kişi Ekle-->
         <scene sceneID="X5P-py-Kv0">
             <objects>
-                <viewController id="3MA-Bn-KJC" sceneMemberID="viewController">
+                <viewController id="3MA-Bn-KJC" customClass="NewEntry" customModule="MyFirstProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PhM-2v-Yaa">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ad Soyad" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="atP-fY-9xY">
-                                <rect key="frame" x="100" y="200" width="193" height="34"/>
+                                <rect key="frame" x="100" y="303" width="193" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4bE-f1-Mmm">
-                                <rect key="frame" x="100" y="334" width="193" height="34"/>
+                                <rect key="frame" x="100" y="437" width="193" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -69,11 +74,29 @@
                             <constraint firstItem="4bE-f1-Mmm" firstAttribute="top" secondItem="atP-fY-9xY" secondAttribute="bottom" constant="100" id="phg-mf-lt0"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="lhi-Zz-fRo"/>
+                    <navigationItem key="navigationItem" title="Yeni Kişi Ekle" id="lhi-Zz-fRo"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XWA-Nt-0bb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1013" y="4"/>
+            <point key="canvasLocation" x="1939.6946564885495" y="3.5211267605633805"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tgC-gE-hmH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yxg-6I-yrG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B8c-pF-AfJ">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="p5x-5d-bmn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a2q-Ni-ghk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="81.679389312977094" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>

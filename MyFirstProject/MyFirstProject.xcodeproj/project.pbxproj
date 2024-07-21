@@ -14,6 +14,7 @@
 		672B89B22C4A862100C84B89 /* MyFirstProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 672B89B02C4A862100C84B89 /* MyFirstProject.xcdatamodeld */; };
 		672B89B42C4A862200C84B89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 672B89B32C4A862200C84B89 /* Assets.xcassets */; };
 		672B89B72C4A862200C84B89 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 672B89B62C4A862200C84B89 /* Base */; };
+		67E54D2C2C4D132800AE69E9 /* NewEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E54D2B2C4D132800AE69E9 /* NewEntry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		672B89B32C4A862200C84B89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		672B89B62C4A862200C84B89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		672B89B82C4A862200C84B89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67E54D2B2C4D132800AE69E9 /* NewEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				672B89A72C4A862100C84B89 /* AppDelegate.swift */,
 				672B89A92C4A862100C84B89 /* SceneDelegate.swift */,
 				672B89AB2C4A862100C84B89 /* HomePage.swift */,
+				67E54D2B2C4D132800AE69E9 /* NewEntry.swift */,
 				672B89AD2C4A862100C84B89 /* Main.storyboard */,
 				672B89B32C4A862200C84B89 /* Assets.xcassets */,
 				672B89B52C4A862200C84B89 /* LaunchScreen.storyboard */,
@@ -144,6 +147,7 @@
 				672B89B22C4A862100C84B89 /* MyFirstProject.xcdatamodeld in Sources */,
 				672B89AC2C4A862100C84B89 /* HomePage.swift in Sources */,
 				672B89A82C4A862100C84B89 /* AppDelegate.swift in Sources */,
+				67E54D2C2C4D132800AE69E9 /* NewEntry.swift in Sources */,
 				672B89AA2C4A862100C84B89 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

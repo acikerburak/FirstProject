@@ -8,8 +8,6 @@
 import UIKit
 
 class HomePage: UIViewController {
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +15,7 @@ class HomePage: UIViewController {
     }
 
     @IBAction func kisiEkleButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "newEntryGecis", sender: nil)
     }
     
 }
