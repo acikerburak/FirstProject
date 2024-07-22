@@ -52,29 +52,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ad Soyad" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="atP-fY-9xY">
-                                <rect key="frame" x="100" y="303" width="193" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ULU-cJ-VHK">
+                                <rect key="frame" x="50" y="203" width="293" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4bE-f1-Mmm">
-                                <rect key="frame" x="100" y="437" width="193" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NkH-zM-Rmx">
+                                <rect key="frame" x="50" y="337" width="293" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1Il-OQ-I29"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1Il-OQ-I29" firstAttribute="trailing" secondItem="4bE-f1-Mmm" secondAttribute="trailing" constant="100" id="1Ln-lD-wd2"/>
-                            <constraint firstItem="atP-fY-9xY" firstAttribute="leading" secondItem="1Il-OQ-I29" secondAttribute="leading" constant="100" id="Gvb-BB-r2v"/>
-                            <constraint firstItem="atP-fY-9xY" firstAttribute="top" secondItem="1Il-OQ-I29" secondAttribute="top" constant="200" id="Hhp-hG-rcN"/>
-                            <constraint firstItem="4bE-f1-Mmm" firstAttribute="leading" secondItem="1Il-OQ-I29" secondAttribute="leading" constant="100" id="TpX-EE-r7i"/>
-                            <constraint firstItem="1Il-OQ-I29" firstAttribute="trailing" secondItem="atP-fY-9xY" secondAttribute="trailing" constant="100" id="bBM-QC-y5D"/>
-                            <constraint firstItem="4bE-f1-Mmm" firstAttribute="top" secondItem="atP-fY-9xY" secondAttribute="bottom" constant="100" id="phg-mf-lt0"/>
+                            <constraint firstItem="NkH-zM-Rmx" firstAttribute="top" secondItem="ULU-cJ-VHK" secondAttribute="bottom" constant="100" id="1bD-Xp-BDI"/>
+                            <constraint firstItem="ULU-cJ-VHK" firstAttribute="leading" secondItem="1Il-OQ-I29" secondAttribute="leading" constant="50" id="9EC-co-oZk"/>
+                            <constraint firstItem="NkH-zM-Rmx" firstAttribute="centerX" secondItem="PhM-2v-Yaa" secondAttribute="centerX" id="Bhl-dI-309"/>
+                            <constraint firstItem="ULU-cJ-VHK" firstAttribute="centerX" secondItem="PhM-2v-Yaa" secondAttribute="centerX" id="IFX-qc-KU2"/>
+                            <constraint firstItem="ULU-cJ-VHK" firstAttribute="top" secondItem="1Il-OQ-I29" secondAttribute="top" constant="100" id="YEV-o5-UmA"/>
+                            <constraint firstItem="1Il-OQ-I29" firstAttribute="trailing" secondItem="NkH-zM-Rmx" secondAttribute="trailing" constant="50" id="sLv-dm-MGI"/>
+                            <constraint firstItem="1Il-OQ-I29" firstAttribute="trailing" secondItem="ULU-cJ-VHK" secondAttribute="trailing" constant="50" id="xXi-NK-jKT"/>
+                            <constraint firstItem="NkH-zM-Rmx" firstAttribute="leading" secondItem="1Il-OQ-I29" secondAttribute="leading" constant="50" id="zMt-gW-Ajb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Yeni Kişi Ekle" id="lhi-Zz-fRo"/>
+                    <connections>
+                        <outlet property="kisiTextField" destination="ULU-cJ-VHK" id="CWk-JN-eP1"/>
+                        <outlet property="pickerTextField" destination="NkH-zM-Rmx" id="zr0-bY-CBs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XWA-Nt-0bb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
