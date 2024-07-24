@@ -11,7 +11,7 @@
         <!--Anasayfa-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomePage" customModule="MyFirstProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomePageVC" customModule="MyFirstProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Yeni Kişi Ekle"/>
                                 <connections>
-                                    <action selector="kisiEkleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="77m-YN-fbM"/>
+                                    <action selector="addPersonButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sag-HQ-Xua"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -37,7 +37,7 @@
                         <barButtonItem key="backBarButtonItem" title="Geri" id="aLp-hY-IEP"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="3MA-Bn-KJC" kind="show" identifier="newEntryGecis" id="1HB-BO-OYU"/>
+                        <segue destination="3MA-Bn-KJC" kind="show" identifier="toNewEntryVC" id="1HB-BO-OYU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -47,7 +47,7 @@
         <!--Yeni Kişi Ekle-->
         <scene sceneID="X5P-py-Kv0">
             <objects>
-                <viewController id="3MA-Bn-KJC" customClass="NewEntry" customModule="MyFirstProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3MA-Bn-KJC" customClass="NewEntryVC" customModule="MyFirstProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PhM-2v-Yaa">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,8 +78,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Yeni Kişi Ekle" id="lhi-Zz-fRo"/>
                     <connections>
-                        <outlet property="kisiTextField" destination="ULU-cJ-VHK" id="CWk-JN-eP1"/>
-                        <outlet property="pickerTextField" destination="NkH-zM-Rmx" id="zr0-bY-CBs"/>
+                        <outlet property="tfFirstPicker" destination="NkH-zM-Rmx" id="Od8-Th-Zbq"/>
+                        <outlet property="tfName" destination="ULU-cJ-VHK" id="iX5-vk-ru8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XWA-Nt-0bb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
