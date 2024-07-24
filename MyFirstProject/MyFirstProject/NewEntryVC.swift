@@ -7,51 +7,155 @@
 
 import UIKit
 
-class NewEntryVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class NewEntryVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     // MARK: Properties
     
     @IBOutlet weak var tfName: UITextField!
     @IBOutlet weak var tfFirstPicker: UITextField!
+    @IBOutlet weak var tfSecondPicker: UITextField!
+    @IBOutlet weak var tfAmount: UITextField!
     
-    let picker = UIPickerView()
-    let jewelryType = ["Altın", "Para"]
+    let firstPickerView = UIPickerView()
+    let secondPickerView = UIPickerView()
+    
+    let firstPickerData = ["Altın", "Para"]
+    var secondPickerData: [String] = []
+    
+    let goldOptions = ["Gram", "Çeyrek", "Yarım", "Tam"]
+    let moneyOptions = ["TL", "Dolar", "Euro"]
     
     // MARK: Initiliaze
     override func viewDidLoad() {
         super.viewDidLoad()
         pickerToolBar()
-        tfFirstPicker.inputView = picker
-        picker.delegate = self
-        picker.dataSource = self
+        
+        tfName.delegate = self
+        tfFirstPicker.delegate = self
+        tfSecondPicker.delegate = self
+        tfAmount.delegate = self
+        
+        firstPickerView.delegate = self
+        firstPickerView.dataSource = self
+        firstPickerView.tag = 1
+        tfFirstPicker.inputView = firstPickerView
+        
+        secondPickerView.delegate = self
+        secondPickerView.dataSource = self
+        secondPickerView.tag = 2
+        tfSecondPicker.inputView = secondPickerView
+        
+        tfName.keyboardType = .alphabet
+        tfAmount.keyboardType = .numberPad
+        
+        tfAmount.isEnabled = false
+        tfAmount.isHidden = true
     }
     
     // MARK: Functions
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == tfFirstPicker {
+            return !tfName.text!.isEmpty
+        } else if textField == tfSecondPicker {
+            return !tfFirstPicker.text!.isEmpty
+        } else if textField == tfAmount {
+            return !tfSecondPicker.text!.isEmpty && tfFirstPicker.text == "Para"
+        }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == tfName {
+            if tfName.text!.isEmpty {
+                return false
+            } else {
+                tfFirstPicker.becomeFirstResponder()
+            }
+        } else if textField == tfFirstPicker {
+            if tfFirstPicker.text!.isEmpty {
+                return false
+            } else {
+                tfSecondPicker.becomeFirstResponder()
+            }
+        } else if textField == tfSecondPicker {
+            if tfSecondPicker.text!.isEmpty {
+                return false
+            } else if tfFirstPicker.text == "Para" {
+                tfAmount.becomeFirstResponder()
+            } else {
+                textField.resignFirstResponder()
+            }
+        } else if textField == tfAmount {
+            if tfAmount.text!.isEmpty {
+                return false
+            } else {
+                textField.resignFirstResponder()
+            }
+        }
+        return true
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return jewelryType.count
+        if pickerView.tag == 1 {
+            return firstPickerData.count
+        } else {
+            return secondPickerData.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return jewelryType[row]
+        if pickerView.tag == 1 {
+            return firstPickerData[row]
+        } else {
+            return secondPickerData[row]
+        }
     }
     
+    // This function is called when a row is selected in a UIPickerView. Different functionalities are implemented for the picker views using their tag properties. When a selection is made in the first picker view ("firstPickerView"), the data of the second picker view ("secondPickerView") is updated and the amount input field (tfAmount) is enabled or disabled accordingly.
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        tfFirstPicker.text = jewelryType[row]
+        if pickerView.tag == 1 {
+            tfFirstPicker.text = firstPickerData[row]
+            if firstPickerData[row] == "Altın" {
+                secondPickerData = goldOptions
+                tfAmount.isEnabled = false
+                tfAmount.isHidden = true
+                tfAmount.text = ""
+            } else {
+                secondPickerData = moneyOptions
+                tfAmount.isEnabled = true
+                tfAmount.isHidden = false
+            }
+            secondPickerView.reloadAllComponents()
+            tfFirstPicker.resignFirstResponder()
+            tfSecondPicker.becomeFirstResponder()
+        } else {
+            tfSecondPicker.text = secondPickerData[row]
+            tfSecondPicker.resignFirstResponder()
+            if tfFirstPicker.text == "Para" {
+                tfAmount.becomeFirstResponder()
+            }
+        }
     }
     
     func pickerToolBar() {
         
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
-        tfFirstPicker.inputAccessoryView = toolBar
         
         let OKButton = UIBarButtonItem(title: "Tamam", style: UIBarButtonItem.Style.done, target: self, action: #selector(dismissPicker))
         toolBar.setItems([OKButton], animated: true)
         toolBar.isUserInteractionEnabled = true
+        
+        tfName.inputAccessoryView = toolBar
+        tfFirstPicker.inputAccessoryView = toolBar
+        tfSecondPicker.inputAccessoryView = toolBar
+        tfAmount.inputAccessoryView = toolBar
     }
     
     // MARK: Actions
