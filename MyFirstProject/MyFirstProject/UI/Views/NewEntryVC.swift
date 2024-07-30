@@ -54,6 +54,11 @@ class NewEntryVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     
     // MARK: Functions
     
+    @IBAction func SaveButton(_ sender: UIButton) {
+        savePerson()
+    }
+    
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == tfFirstPicker {
             return !tfName.text!.isEmpty
@@ -162,4 +167,26 @@ class NewEntryVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     @objc func dismissPicker() {
         view.endEditing(true)
     }
+    
+    func savePerson() {
+        guard let name = tfName.text, !name.isEmpty,
+              let giftType = tfSecondPicker.text, !giftType.isEmpty else {
+            return
+        }
+        
+        var amount: Double?
+        if tfFirstPicker.text == "Para" {
+            amount = Double(tfAmount.text ?? "")
+        }
+        
+        DataManager.shared.addPerson(name: name, giftType: giftType, amount: amount)
+        
+        // Optionally, show a success message or navigate back
+        let alert = UIAlertController(title: "Başarılı", message: "Kişi ve takı başarıyla kaydedildi.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Tamam", style: .default, handler: { _ in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
