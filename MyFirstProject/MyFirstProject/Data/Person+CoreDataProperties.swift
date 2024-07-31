@@ -21,7 +21,6 @@ extension Person {
 
 }
 
-// MARK: Generated accessors for gifts
 extension Person {
 
     @objc(addGiftsObject:)

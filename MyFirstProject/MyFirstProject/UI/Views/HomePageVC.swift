@@ -18,5 +18,10 @@ class HomePageVC: UIViewController {
     @IBAction func addPersonButton(_ sender: Any) {
         performSegue(withIdentifier: "toNewEntryVC", sender: nil)
     }
+    
+    @IBAction func showPersonListButton(_ sender: Any) {
+        performSegue(withIdentifier: "showPersonList", sender: nil)
+    }
+    
 }
 

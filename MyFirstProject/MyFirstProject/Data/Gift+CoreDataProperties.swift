@@ -17,7 +17,7 @@ extension Gift {
     }
 
     @NSManaged public var type: String?
-    @NSManaged public var amount: Double
+    @NSManaged public var amount: Int16
     @NSManaged public var person: Person?
 
 }

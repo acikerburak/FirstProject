@@ -174,12 +174,9 @@ class NewEntryVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             return
         }
         
-        var amount: Double?
-        if tfFirstPicker.text == "Para" {
-            amount = Double(tfAmount.text ?? "")
-        }
+        let giftAmount: Int16? = tfFirstPicker.text == "Para" ? Int16(tfAmount.text ?? "0") : nil
         
-        DataManager.shared.addPerson(name: name, giftType: giftType, amount: amount)
+        DataManager.shared.addPerson(name: name, giftType: giftType, giftAmount: giftAmount)
         
         // Optionally, show a success message or navigate back
         let alert = UIAlertController(title: "Başarılı", message: "Kişi ve takı başarıyla kaydedildi.", preferredStyle: .alert)
@@ -188,5 +185,4 @@ class NewEntryVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         }))
         present(alert, animated: true, completion: nil)
     }
-    
 }
