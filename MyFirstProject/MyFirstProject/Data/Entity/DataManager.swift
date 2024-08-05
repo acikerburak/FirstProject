@@ -21,7 +21,7 @@ class DataManager {
         
         let newGift = Gift(context: context)
         newGift.type = giftType
-        newGift.amount = giftAmount ?? 0
+        newGift.amount = giftAmount ?? 1
         newGift.person = newPerson
         
         saveContext()
@@ -37,7 +37,7 @@ class DataManager {
         }
     }
     
-    private func saveContext() {
+    func saveContext() {
         if context.hasChanges {
             do {
                 try context.save()
@@ -46,5 +46,14 @@ class DataManager {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    func updatePerson(person: Person, name: String, giftType: String, giftAmount: Int16) {
+        person.name = name
+        if let gift = person.gifts?.anyObject() as? Gift {
+            gift.type = giftType
+            gift.amount = giftAmount
+        }
+        saveContext()
     }
 }

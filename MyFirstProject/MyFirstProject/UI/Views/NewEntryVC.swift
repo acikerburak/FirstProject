@@ -16,6 +16,8 @@ class NewEntryVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     @IBOutlet weak var tfSecondPicker: UITextField!
     @IBOutlet weak var tfAmount: UITextField!
     
+    var personToEdit: Person?
+    
     let firstPickerView = UIPickerView()
     let secondPickerView = UIPickerView()
     
@@ -50,6 +52,22 @@ class NewEntryVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         
         tfAmount.isEnabled = false
         tfAmount.isHidden = true
+        
+        if let person = personToEdit {
+            tfName.text = person.name
+            if let gift = person.gifts?.anyObject() as? Gift {
+                tfFirstPicker.text = gift.type
+                if gift.type == "Para" {
+                    tfAmount.isHidden = false
+                    tfAmount.isEnabled = true
+                    tfAmount.text = "\(gift.amount)"
+                    secondPickerData = moneyOptions
+                } else {
+                    secondPickerData = goldOptions
+                }
+                tfSecondPicker.text = secondPickerData.first { $0 == gift.type }
+            }
+        }
     }
     
     // MARK: Functions
@@ -174,11 +192,14 @@ class NewEntryVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             return
         }
         
-        let giftAmount: Int16? = tfFirstPicker.text == "Para" ? Int16(tfAmount.text ?? "0") : nil
+        let giftAmount: Int16 = tfFirstPicker.text == "Para" ? Int16(tfAmount.text ?? "1") ?? 1 : 1
         
-        DataManager.shared.addPerson(name: name, giftType: giftType, giftAmount: giftAmount)
+        if let person = personToEdit {
+            DataManager.shared.updatePerson(person: person, name: name, giftType: giftType, giftAmount: giftAmount)
+        } else {
+            DataManager.shared.addPerson(name: name, giftType: giftType, giftAmount: giftAmount)
+        }
         
-        // Optionally, show a success message or navigate back
         let alert = UIAlertController(title: "Başarılı", message: "Kişi ve takı başarıyla kaydedildi.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Tamam", style: .default, handler: { _ in
             self.navigationController?.popViewController(animated: true)

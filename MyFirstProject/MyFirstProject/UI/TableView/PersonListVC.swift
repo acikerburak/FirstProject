@@ -13,9 +13,13 @@ class PersonListVC: UITableViewController {
     // MARK: Properties
     var persons: [Person] = []
 
-    // MARK: Lifecycle Methods
+    // MARK: Initiliaze
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchPersons()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         fetchPersons()
     }
 
@@ -34,11 +38,12 @@ class PersonListVC: UITableViewController {
 
         if let gift = person.gifts?.anyObject() as? Gift {
             let giftType = gift.type ?? ""
-            print("Gift Type: \(giftType), Amount: \(gift.amount)") // Debug Control
+            let giftAmount = gift.amount
+            print("Gift Type: \(giftType), Amount: \(giftAmount)") // Debug Control
             if giftType == "Para" {
-                cell.detailTextLabel?.text = "\(giftType) - Miktar: \(gift.amount)"
+                cell.detailTextLabel?.text = "\(giftType) - Miktar: \(giftAmount)"
             } else {
-                cell.detailTextLabel?.text = giftType
+                cell.detailTextLabel?.text = "\(giftType) - Miktar: \(giftAmount)"
             }
         } else {
             cell.detailTextLabel?.text = "Takı Bilgisi Yok"
@@ -47,8 +52,37 @@ class PersonListVC: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let personToDelete = persons[indexPath.row]
+            DataManager.shared.deletePerson(person: personToDelete)
+            persons.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let personToEdit = persons[indexPath.row]
+        performSegue(withIdentifier: "editPersonSegue", sender: personToEdit)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editPersonSegue",
+           let destinationVC = segue.destination as? NewEntryVC,
+           let personToEdit = sender as? Person {
+            destinationVC.personToEdit = personToEdit
+        }
+    }
+    
     func fetchPersons() {
         persons = DataManager.shared.fetchAllPersons()
         tableView.reloadData()
+    }
+}
+
+extension DataManager {
+    func deletePerson(person: Person) {
+        context.delete(person)
+        saveContext()
     }
 }
