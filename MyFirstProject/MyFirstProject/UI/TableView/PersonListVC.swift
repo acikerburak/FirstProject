@@ -39,11 +39,11 @@ class PersonListVC: UITableViewController {
         if let gift = person.gifts?.anyObject() as? Gift {
             let giftType = gift.type ?? ""
             let giftAmount = gift.amount
-            print("Gift Type: \(giftType), Amount: \(giftAmount)") // Debug Control
+            print("Gift Type: \(giftType), Amount: \(giftAmount)")
             if giftType == "Para" {
                 cell.detailTextLabel?.text = "\(giftType) - Miktar: \(giftAmount)"
             } else {
-                cell.detailTextLabel?.text = "\(giftType) - Miktar: \(giftAmount)"
+                cell.detailTextLabel?.text = "\(giftType)"
             }
         } else {
             cell.detailTextLabel?.text = "Takı Bilgisi Yok"

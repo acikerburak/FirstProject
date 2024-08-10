@@ -188,7 +188,7 @@ class NewEntryVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     
     func savePerson() {
         guard let name = tfName.text, !name.isEmpty,
-              let giftType = tfSecondPicker.text, !giftType.isEmpty else {
+              let giftType = tfFirstPicker.text, !giftType.isEmpty else {
             return
         }
         

@@ -12,6 +12,7 @@ class HomePageVC: UIViewController {
     // MARK: Initiliaze
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     // MARK: Functions
@@ -22,6 +23,5 @@ class HomePageVC: UIViewController {
     @IBAction func showPersonListButton(_ sender: Any) {
         performSegue(withIdentifier: "showPersonList", sender: nil)
     }
-    
 }
 

@@ -168,7 +168,9 @@
                             <outlet property="delegate" destination="9fM-Wl-62d" id="g68-Vl-wi8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Rt6-Ir-ny8"/>
+                    <navigationItem key="navigationItem" id="Rt6-Ir-ny8">
+                        <barButtonItem key="backBarButtonItem" title="Geri" id="R3g-U5-Dbh"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="3MA-Bn-KJC" kind="show" identifier="editPersonSegue" id="Qi7-43-avX"/>
                     </connections>
