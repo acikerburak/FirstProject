@@ -2,7 +2,7 @@
 //  Gift+CoreDataProperties.swift
 //  MyFirstProject
 //
-//  Created by Burak on 30.07.2024.
+//  Created by Burak on 12.08.2024.
 //
 //
 
@@ -16,8 +16,8 @@ extension Gift {
         return NSFetchRequest<Gift>(entityName: "Gift")
     }
 
-    @NSManaged public var type: String?
     @NSManaged public var amount: Int16
+    @NSManaged public var type: String?
     @NSManaged public var person: Person?
 
 }

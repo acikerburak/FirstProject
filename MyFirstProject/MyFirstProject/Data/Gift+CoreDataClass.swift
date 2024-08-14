@@ -2,7 +2,7 @@
 //  Gift+CoreDataClass.swift
 //  MyFirstProject
 //
-//  Created by Burak on 30.07.2024.
+//  Created by Burak on 12.08.2024.
 //
 //
 

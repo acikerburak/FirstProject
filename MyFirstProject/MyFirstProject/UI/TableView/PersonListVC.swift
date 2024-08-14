@@ -12,14 +12,40 @@ class PersonListVC: UITableViewController {
     
     // MARK: Properties
     var persons: [Person] = []
+    
+    var exchangeRates: (usd: Double?, eur: Double?, try: Double?, xau: Double?)? = nil
 
     // MARK: Initiliaze
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchPersons()
+        
+        let sumButton = UIBarButtonItem(title: "Toplam", style: .plain, target: self, action: #selector(sumButtonTapped))
+        self.navigationItem.rightBarButtonItem = sumButton
+        
+        fetchExchangeRates { usdRate, eurRate, tryRate, xauRate in
+            DispatchQueue.main.async {
+                self.exchangeRates = (usdRate, eurRate, tryRate, xauRate)
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    @objc func sumButtonTapped() {
+        var totalAmount: Double = 0.0
+        
+        for person in persons {
+            totalAmount += person.jewelryAmount
+        }
+        
+        let alertController = UIAlertController(title: "Toplam Tutar", message: "Takıların toplam değeri: \(totalAmount) TRY", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Tamam", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fetchPersons()
     }
 
@@ -39,11 +65,11 @@ class PersonListVC: UITableViewController {
         if let gift = person.gifts?.anyObject() as? Gift {
             let giftType = gift.type ?? ""
             let giftAmount = gift.amount
-            print("Gift Type: \(giftType), Amount: \(giftAmount)")
+            //print("Gift Type: \(giftType), Amount: \(giftAmount)")
             if giftType == "Para" {
                 cell.detailTextLabel?.text = "\(giftType) - Miktar: \(giftAmount)"
             } else {
-                cell.detailTextLabel?.text = "\(giftType)"
+                cell.detailTextLabel?.text = "\(giftType) - Miktar: \(giftAmount)"
             }
         } else {
             cell.detailTextLabel?.text = "Takı Bilgisi Yok"
@@ -75,14 +101,20 @@ class PersonListVC: UITableViewController {
     }
     
     func fetchPersons() {
-        persons = DataManager.shared.fetchAllPersons()
+        let fetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        do {
+            persons = try context.fetch(fetchRequest)
+            print("Yüklenen Kişiler: \(persons)")
+        } catch let error {
+            print("Veriler yüklenemedi: \(error)")
+        }
+        
         tableView.reloadData()
     }
 }
 
-extension DataManager {
-    func deletePerson(person: Person) {
-        context.delete(person)
-        saveContext()
-    }
-}

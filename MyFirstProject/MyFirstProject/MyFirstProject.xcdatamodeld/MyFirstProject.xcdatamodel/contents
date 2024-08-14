@@ -6,6 +6,7 @@
         <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="gifts" inverseEntity="Person"/>
     </entity>
     <entity name="Person" representedClassName="Person" syncable="YES">
+        <attribute name="jewelryAmount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="gifts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Gift" inverseName="person" inverseEntity="Gift"/>
     </entity>

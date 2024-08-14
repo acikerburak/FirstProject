@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NewEntryVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
@@ -26,6 +27,9 @@ class NewEntryVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     
     let goldOptions = ["Gram", "Çeyrek", "Yarım", "Tam"]
     let moneyOptions = ["TL", "Dolar", "Euro"]
+    
+    var context: NSManagedObjectContext!
+    var person: Person?
     
     // MARK: Initiliaze
     override func viewDidLoad() {
@@ -76,6 +80,25 @@ class NewEntryVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         savePerson()
     }
     
+    func saveGift() {
+        guard let giftType = tfFirstPicker.text, !giftType.isEmpty else { return }
+        
+        let gift = Gift(context: self.context)
+        gift.type = giftType
+        gift.amount = Int16(tfAmount.text ?? "1") ?? 1
+        
+        self.person?.addToGifts(gift)
+        
+        do {
+            try self.context.save()
+            print("Gift saved successfully!")
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.saveContext()
+            }
+        } catch {
+            print("Failed to save gift: \(error)")
+        }
+    }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == tfFirstPicker {
@@ -188,7 +211,7 @@ class NewEntryVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     
     func savePerson() {
         guard let name = tfName.text, !name.isEmpty,
-              let giftType = tfFirstPicker.text, !giftType.isEmpty else {
+              let giftType = tfSecondPicker.text, !giftType.isEmpty else {
             return
         }
         

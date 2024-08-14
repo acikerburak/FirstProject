@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6707C9A22C5904C500B99BAF /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6707C9A12C5904C500B99BAF /* DataManager.swift */; };
-		6707C9A72C591C4100B99BAF /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6707C9A32C591C4100B99BAF /* Person+CoreDataClass.swift */; };
-		6707C9A82C591C4100B99BAF /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6707C9A42C591C4100B99BAF /* Person+CoreDataProperties.swift */; };
-		6707C9A92C591C4100B99BAF /* Gift+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6707C9A52C591C4100B99BAF /* Gift+CoreDataClass.swift */; };
-		6707C9AA2C591C4100B99BAF /* Gift+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6707C9A62C591C4100B99BAF /* Gift+CoreDataProperties.swift */; };
 		672B89A82C4A862100C84B89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672B89A72C4A862100C84B89 /* AppDelegate.swift */; };
 		672B89AA2C4A862100C84B89 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672B89A92C4A862100C84B89 /* SceneDelegate.swift */; };
 		672B89AC2C4A862100C84B89 /* HomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672B89AB2C4A862100C84B89 /* HomePageVC.swift */; };
@@ -19,16 +15,18 @@
 		672B89B22C4A862100C84B89 /* MyFirstProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 672B89B02C4A862100C84B89 /* MyFirstProject.xcdatamodeld */; };
 		672B89B42C4A862200C84B89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 672B89B32C4A862200C84B89 /* Assets.xcassets */; };
 		672B89B72C4A862200C84B89 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 672B89B62C4A862200C84B89 /* Base */; };
+		678F610C2C6A05C900E9B2E4 /* ExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F610B2C6A05C900E9B2E4 /* ExchangeRates.swift */; };
+		678F610E2C6A062900E9B2E4 /* FetchExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F610D2C6A062900E9B2E4 /* FetchExchangeRates.swift */; };
+		678F611B2C6A5FD300E9B2E4 /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F61172C6A5FD300E9B2E4 /* Person+CoreDataClass.swift */; };
+		678F611C2C6A5FD300E9B2E4 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F61182C6A5FD300E9B2E4 /* Person+CoreDataProperties.swift */; };
+		678F611D2C6A5FD300E9B2E4 /* Gift+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F61192C6A5FD300E9B2E4 /* Gift+CoreDataClass.swift */; };
+		678F611E2C6A5FD300E9B2E4 /* Gift+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F611A2C6A5FD300E9B2E4 /* Gift+CoreDataProperties.swift */; };
 		67CB29142C5A2D0200A9D7C9 /* PersonListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB29132C5A2D0200A9D7C9 /* PersonListVC.swift */; };
 		67E54D2C2C4D132800AE69E9 /* NewEntryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E54D2B2C4D132800AE69E9 /* NewEntryVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6707C9A12C5904C500B99BAF /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		6707C9A32C591C4100B99BAF /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
-		6707C9A42C591C4100B99BAF /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		6707C9A52C591C4100B99BAF /* Gift+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gift+CoreDataClass.swift"; sourceTree = "<group>"; };
-		6707C9A62C591C4100B99BAF /* Gift+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gift+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		672B89A42C4A862100C84B89 /* MyFirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		672B89A72C4A862100C84B89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		672B89A92C4A862100C84B89 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +36,12 @@
 		672B89B32C4A862200C84B89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		672B89B62C4A862200C84B89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		672B89B82C4A862200C84B89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		678F610B2C6A05C900E9B2E4 /* ExchangeRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRates.swift; sourceTree = "<group>"; };
+		678F610D2C6A062900E9B2E4 /* FetchExchangeRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchExchangeRates.swift; sourceTree = "<group>"; };
+		678F61172C6A5FD300E9B2E4 /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
+		678F61182C6A5FD300E9B2E4 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		678F61192C6A5FD300E9B2E4 /* Gift+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gift+CoreDataClass.swift"; sourceTree = "<group>"; };
+		678F611A2C6A5FD300E9B2E4 /* Gift+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gift+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		67CB29132C5A2D0200A9D7C9 /* PersonListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListVC.swift; sourceTree = "<group>"; };
 		67E54D2B2C4D132800AE69E9 /* NewEntryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,10 +92,10 @@
 		6732C5102C52BA9200D2D8E0 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				6707C9A32C591C4100B99BAF /* Person+CoreDataClass.swift */,
-				6707C9A42C591C4100B99BAF /* Person+CoreDataProperties.swift */,
-				6707C9A52C591C4100B99BAF /* Gift+CoreDataClass.swift */,
-				6707C9A62C591C4100B99BAF /* Gift+CoreDataProperties.swift */,
+				678F61172C6A5FD300E9B2E4 /* Person+CoreDataClass.swift */,
+				678F61182C6A5FD300E9B2E4 /* Person+CoreDataProperties.swift */,
+				678F61192C6A5FD300E9B2E4 /* Gift+CoreDataClass.swift */,
+				678F611A2C6A5FD300E9B2E4 /* Gift+CoreDataProperties.swift */,
 				6732C5132C52BAF400D2D8E0 /* Entity */,
 			);
 			path = Data;
@@ -119,6 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				6707C9A12C5904C500B99BAF /* DataManager.swift */,
+				678F610B2C6A05C900E9B2E4 /* ExchangeRates.swift */,
+				678F610D2C6A062900E9B2E4 /* FetchExchangeRates.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -206,13 +212,15 @@
 				672B89B22C4A862100C84B89 /* MyFirstProject.xcdatamodeld in Sources */,
 				6707C9A22C5904C500B99BAF /* DataManager.swift in Sources */,
 				672B89AC2C4A862100C84B89 /* HomePageVC.swift in Sources */,
+				678F610C2C6A05C900E9B2E4 /* ExchangeRates.swift in Sources */,
 				672B89A82C4A862100C84B89 /* AppDelegate.swift in Sources */,
 				67E54D2C2C4D132800AE69E9 /* NewEntryVC.swift in Sources */,
 				672B89AA2C4A862100C84B89 /* SceneDelegate.swift in Sources */,
-				6707C9A72C591C4100B99BAF /* Person+CoreDataClass.swift in Sources */,
-				6707C9A82C591C4100B99BAF /* Person+CoreDataProperties.swift in Sources */,
-				6707C9A92C591C4100B99BAF /* Gift+CoreDataClass.swift in Sources */,
-				6707C9AA2C591C4100B99BAF /* Gift+CoreDataProperties.swift in Sources */,
+				678F611B2C6A5FD300E9B2E4 /* Person+CoreDataClass.swift in Sources */,
+				678F611C2C6A5FD300E9B2E4 /* Person+CoreDataProperties.swift in Sources */,
+				678F611D2C6A5FD300E9B2E4 /* Gift+CoreDataClass.swift in Sources */,
+				678F611E2C6A5FD300E9B2E4 /* Gift+CoreDataProperties.swift in Sources */,
+				678F610E2C6A062900E9B2E4 /* FetchExchangeRates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

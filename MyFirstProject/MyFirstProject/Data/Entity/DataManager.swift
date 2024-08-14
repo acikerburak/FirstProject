@@ -11,23 +11,36 @@ import CoreData
 class DataManager {
     
     static let shared = DataManager()
-    private init() {}
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let persistentContainer: NSPersistentContainer
     
-    func addPerson(name: String, giftType: String, giftAmount: Int16? = nil) {
+    private init() {
+        persistentContainer = NSPersistentContainer(name: "MyFirstProject")
+        persistentContainer.loadPersistentStores { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        }
+    }
+
+    func addPerson(name: String, giftType: String? = nil, giftAmount: Int16? = nil, jewelryAmount: Double? = nil) {
+        let context = persistentContainer.viewContext
         let newPerson = Person(context: context)
         newPerson.name = name
-        
-        let newGift = Gift(context: context)
-        newGift.type = giftType
-        newGift.amount = giftAmount ?? 1
-        newGift.person = newPerson
+        newPerson.jewelryAmount = jewelryAmount ?? 0.0
+
+        if let giftType = giftType {
+            let newGift = Gift(context: context)
+            newGift.type = giftType
+            newGift.amount = giftAmount ?? 1
+            newGift.person = newPerson
+        }
         
         saveContext()
     }
     
     func fetchAllPersons() -> [Person] {
+        let context = persistentContainer.viewContext
         let request: NSFetchRequest<Person> = Person.fetchRequest()
         do {
             return try context.fetch(request)
@@ -38,6 +51,7 @@ class DataManager {
     }
     
     func saveContext() {
+        let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()
@@ -48,12 +62,39 @@ class DataManager {
         }
     }
     
-    func updatePerson(person: Person, name: String, giftType: String, giftAmount: Int16) {
-        person.name = name
-        if let gift = person.gifts?.anyObject() as? Gift {
-            gift.type = giftType
-            gift.amount = giftAmount
+    func updatePerson(person: Person, name: String, giftType: String? = nil, giftAmount: Int16? = nil) {
+        let context = person.managedObjectContext ?? persistentContainer.viewContext
+        
+        context.performAndWait {
+            person.name = name
+            if let gift = person.gifts?.anyObject() as? Gift {
+                if let giftType = giftType {
+                    gift.type = giftType
+                }
+                if let giftAmount = giftAmount {
+                    gift.amount = giftAmount
+                }
+            }
+            
+            do {
+                try context.save()
+            } catch {
+                print("Failed to save context: \(error)")
+            }
         }
-        saveContext()
+    }
+    
+    func deletePerson(person: Person) {
+        if let context = person.managedObjectContext {
+            context.delete(person)
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context: \(error)")
+            }
+        } else {
+            print("Error: person has no associated context.")
+        }
     }
 }
+

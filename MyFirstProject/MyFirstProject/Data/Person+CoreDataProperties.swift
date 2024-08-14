@@ -2,7 +2,7 @@
 //  Person+CoreDataProperties.swift
 //  MyFirstProject
 //
-//  Created by Burak on 30.07.2024.
+//  Created by Burak on 12.08.2024.
 //
 //
 
@@ -17,6 +17,7 @@ extension Person {
     }
 
     @NSManaged public var name: String?
+    @NSManaged public var jewelryAmount: Double
     @NSManaged public var gifts: NSSet?
 
 }
