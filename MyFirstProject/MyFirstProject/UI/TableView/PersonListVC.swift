@@ -43,7 +43,6 @@ class PersonListVC: UITableViewController {
         }
         
         for person in persons {
-            // Takıların miktarını ekle
             totalAmountInTRY += person.jewelryAmount
             
             if let gift = person.gifts?.anyObject() as? Gift, let giftType = gift.type {
@@ -60,6 +59,31 @@ class PersonListVC: UITableViewController {
                     if let eurRate = exchangeRates.eur, let tryRate = exchangeRates.try {
                         convertedAmount = Double(gift.amount) * (tryRate / eurRate)
                     }
+                case "Gram":
+                    if let xauRate = exchangeRates.xau, let tryRate = exchangeRates.try {
+                        let oneOunceInUSD = 1 / xauRate
+                        let oneOunceInTRY = oneOunceInUSD * tryRate
+                        convertedAmount = oneOunceInTRY / 31.1034768
+                    }
+                case "Çeyrek":
+                    if let xauRate = exchangeRates.xau, let tryRate = exchangeRates.try {
+                        let oneOunceInUSD = 1 / xauRate
+                        let oneOunceInTRY = oneOunceInUSD * tryRate * 1.75
+                        convertedAmount = oneOunceInTRY / 31.1034768
+                    }
+                case "Yarım":
+                    if let xauRate = exchangeRates.xau, let tryRate = exchangeRates.try {
+                        let oneOunceInUSD = 1 / xauRate
+                        let oneOunceInTRY = oneOunceInUSD * tryRate * 3.5
+                        convertedAmount = oneOunceInTRY / 31.1034768
+                    }
+                case "Tam":
+                    if let xauRate = exchangeRates.xau, let tryRate = exchangeRates.try {
+                        let oneOunceInUSD = 1 / xauRate
+                        let oneOunceInTRY = oneOunceInUSD * tryRate * 7.216
+                        convertedAmount = oneOunceInTRY / 31.1034768
+                    }
+                    print("\(convertedAmount)")
                 default:
                     break
                 }
@@ -78,24 +102,23 @@ class PersonListVC: UITableViewController {
         super.viewWillAppear(animated)
         fetchPersons()
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return persons.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PersonCell", for: indexPath)
         let person = persons[indexPath.row]
         cell.textLabel?.text = person.name
-
+        
         if let gift = person.gifts?.anyObject() as? Gift {
             let giftType = gift.type ?? ""
             let giftAmount = gift.amount
-            //print("Gift Type: \(giftType), Amount: \(giftAmount)")
             if giftType == "Para" {
                 cell.detailTextLabel?.text = "\(giftType) - Miktar: \(giftAmount)"
             } else {
@@ -104,7 +127,7 @@ class PersonListVC: UITableViewController {
         } else {
             cell.detailTextLabel?.text = "Takı Bilgisi Yok"
         }
-
+        
         return cell
     }
     
