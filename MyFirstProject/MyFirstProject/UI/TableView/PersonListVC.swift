@@ -32,13 +32,43 @@ class PersonListVC: UITableViewController {
     }
     
     @objc func sumButtonTapped() {
-        var totalAmount: Double = 0.0
+        var totalAmountInTRY: Double = 0.0
         
-        for person in persons {
-            totalAmount += person.jewelryAmount
+        guard let exchangeRates = exchangeRates else {
+            let alertController = UIAlertController(title: "Hata", message: "Döviz kurları yüklenemedi.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Tamam", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
+            return
         }
         
-        let alertController = UIAlertController(title: "Toplam Tutar", message: "Takıların toplam değeri: \(totalAmount) TRY", preferredStyle: .alert)
+        for person in persons {
+            // Takıların miktarını ekle
+            totalAmountInTRY += person.jewelryAmount
+            
+            if let gift = person.gifts?.anyObject() as? Gift, let giftType = gift.type {
+                var convertedAmount: Double = 0.0
+                
+                switch giftType {
+                case "TL":
+                    convertedAmount = Double(gift.amount)
+                case "Dolar":
+                    if let usdRate = exchangeRates.try {
+                        convertedAmount = Double(gift.amount) * usdRate
+                    }
+                case "Euro":
+                    if let eurRate = exchangeRates.eur, let tryRate = exchangeRates.try {
+                        convertedAmount = Double(gift.amount) * (tryRate / eurRate)
+                    }
+                default:
+                    break
+                }
+                
+                totalAmountInTRY += convertedAmount
+            }
+        }
+        
+        let alertController = UIAlertController(title: "Toplam Tutar", message: "Toplam tutar: \(totalAmountInTRY) TRY", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Tamam", style: .default, handler: nil)
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
