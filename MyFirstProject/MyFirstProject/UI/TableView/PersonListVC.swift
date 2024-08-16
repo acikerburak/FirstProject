@@ -68,22 +68,21 @@ class PersonListVC: UITableViewController {
                 case "Çeyrek":
                     if let xauRate = exchangeRates.xau, let tryRate = exchangeRates.try {
                         let oneOunceInUSD = 1 / xauRate
-                        let oneOunceInTRY = oneOunceInUSD * tryRate * 1.75
+                        let oneOunceInTRY = oneOunceInUSD * tryRate * 1.638
                         convertedAmount = oneOunceInTRY / 31.1034768
                     }
                 case "Yarım":
                     if let xauRate = exchangeRates.xau, let tryRate = exchangeRates.try {
                         let oneOunceInUSD = 1 / xauRate
-                        let oneOunceInTRY = oneOunceInUSD * tryRate * 3.5
+                        let oneOunceInTRY = oneOunceInUSD * tryRate * 3.289
                         convertedAmount = oneOunceInTRY / 31.1034768
                     }
                 case "Tam":
                     if let xauRate = exchangeRates.xau, let tryRate = exchangeRates.try {
                         let oneOunceInUSD = 1 / xauRate
-                        let oneOunceInTRY = oneOunceInUSD * tryRate * 7.216
+                        let oneOunceInTRY = oneOunceInUSD * tryRate * 6.475
                         convertedAmount = oneOunceInTRY / 31.1034768
                     }
-                    print("\(convertedAmount)")
                 default:
                     break
                 }
@@ -92,7 +91,9 @@ class PersonListVC: UITableViewController {
             }
         }
         
-        let alertController = UIAlertController(title: "Toplam Tutar", message: "Toplam tutar: \(totalAmountInTRY) TRY", preferredStyle: .alert)
+        let formattedTotalAmount = String(format: "%.0f", totalAmountInTRY)
+        
+        let alertController = UIAlertController(title: "Toplam Tutar", message: "\(formattedTotalAmount) TL", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Tamam", style: .default, handler: nil)
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
@@ -162,7 +163,6 @@ class PersonListVC: UITableViewController {
         
         do {
             persons = try context.fetch(fetchRequest)
-            print("Yüklenen Kişiler: \(persons)")
         } catch let error {
             print("Veriler yüklenemedi: \(error)")
         }
